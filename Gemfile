@@ -20,4 +20,5 @@ end
 
 group :development do
   gem 'rubocop', '~> 0.34.0', require: false
+  gem 'awesome_print', '~> 1.6.1'
 end
