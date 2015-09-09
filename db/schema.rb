@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150909215100) do
+ActiveRecord::Schema.define(version: 20150909220805) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,44 @@ ActiveRecord::Schema.define(version: 20150909215100) do
   add_index "admins", ["login"], name: "index_admins_on_login", unique: true, using: :btree
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
+  create_table "comments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "office_id"
+    t.text     "content"
+    t.boolean  "approved"
+    t.datetime "reviewed_at"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "comments", ["office_id"], name: "index_comments_on_office_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "offices", force: :cascade do |t|
+    t.string   "name"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "kind"
+    t.string   "status"
+    t.text     "description"
+    t.datetime "last_reviewed_at"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "office_id"
+    t.boolean  "approved"
+    t.datetime "reviewed_at"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "photos", ["office_id"], name: "index_photos_on_office_id", using: :btree
+  add_index "photos", ["user_id"], name: "index_photos_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "login",                  default: "", null: false
@@ -56,4 +94,8 @@ ActiveRecord::Schema.define(version: 20150909215100) do
   add_index "users", ["login"], name: "index_users_on_login", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "comments", "offices"
+  add_foreign_key "comments", "users"
+  add_foreign_key "photos", "offices"
+  add_foreign_key "photos", "users"
 end
