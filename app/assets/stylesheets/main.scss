@@ -1,2 +1,9 @@
-@import 'styles/layout';
+// shared
+@import 'shared/colors';
+
+// layout
+@import 'styles/layout/layout';
+@import 'styles/layout/flex';
+
+// app
 @import 'styles/home';

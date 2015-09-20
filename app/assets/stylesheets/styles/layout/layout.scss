@@ -1,0 +1,30 @@
+body {
+  margin: 0;
+}
+
+header, footer {
+  background: $layout-darker;
+}
+
+footer {
+  height: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  .copyright {
+    float: right;
+  }
+}
+
+header {
+  height: 80px;
+}
+
+main {
+  background: $layout-base;
+  padding: 20px;
+}
+
+nav {
+  background: $layout-base;
+}
