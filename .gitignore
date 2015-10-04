@@ -18,3 +18,7 @@
 
 # Ignore other configs
 config/database.yml
+
+# webpack
+app/assets/node_modules/
+app/assets/javascripts/webpack.bundle.js
