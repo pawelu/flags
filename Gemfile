@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.4'
+gem 'rails', '4.2.6'
 
 gem 'pg', '~> 0.18.3'
 gem 'devise', '~> 3.5.2'
@@ -10,7 +10,6 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 
-gem 'jquery-rails', '~> 4.0.5'
 gem 'jbuilder', '~> 2.3.1'
 gem 'unicorn', '~> 4.9.0'
 
